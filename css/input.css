@@ -34,6 +34,9 @@
     transform: rotateX(-20deg) scale(1.1);
 }
 
+.selected-card {
+    box-shadow: 0 -5px 0 0px rgb(255, 255, 255);
+}
 /* card styles */
 
 
