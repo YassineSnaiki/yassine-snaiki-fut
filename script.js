@@ -632,8 +632,6 @@ makeLayout("5-3-2",layout)
     const list = formationForm.querySelector('.change-players');
     list.innerHTML = "<h3 class='text-white text-center'>Select Player :</h3>";
     let arr;
-    console.log(currCard.dataset.role);
-    
     if(currCard.dataset.role === "GK") arr = goalKeepers;
     else if (currCard.dataset.role === "LB" || currCard.dataset.role === 'CB' || currCard.dataset.role === 'RB') arr = backPlayers;
     else if (currCard.dataset.role === "CM" || currCard.dataset.role === 'CDM') arr = middlePlayers;
@@ -641,13 +639,14 @@ makeLayout("5-3-2",layout)
     arr.forEach(p=>{
         if(!currentTeam.find(el=>el.name === p.name))
             list.insertAdjacentHTML('beforeend',`
-        <li class="text-white"><button class="btn-select-player cursor-pointer hover:bg-slate-800 w-full bg-slate-600 transition-colors">${p.name}</button></li>
+        <li class="text-white flex"><button class="btn-select-player flex items-center cursor-pointer hover:bg-slate-800 w-full bg-slate-600 transition-colors"><img class="w-10" src="${p.photo}"/>${p.name}</button></li>
         `)
     })
     list.insertAdjacentHTML('beforeend',"<button class='btn-close-choice text-white w-fit bg-black mx-auto p-2 hover:bg-slate-600 transition-colors'>Cancel</button>")
     list.querySelector('.btn-close-choice').addEventListener('click',e=>{
         e.preventDefault();
         formationForm.querySelector('.change-players').innerHTML = "";
+        currCard.classList.remove('selected-card')
     })
 })
 
@@ -722,6 +721,65 @@ function displayPlayers(players) {
     
     cards.forEach((card,i)=>{
         card.dataset.name = players[i].name;
+        let features = ``;
+        if(players[i].position !== 'GK')
+          features = `<div class="player-features-col">
+            <span>
+            <span class="player-feature-value">${players[i].pace}</span>
+            <span class="player-feature-title">PAC</span>
+            </span>
+            <span>
+            <span class="player-feature-value">${players[i].shooting}</span>
+            <span class="player-feature-title">SHO</span>
+            </span>
+            <span>
+            <span class="player-feature-value">${players[i].passing}</span>
+            <span class="player-feature-title">PAS</span>
+            </span>
+            </div>
+            <div class="player-features-col">
+            <span>
+            <span class="player-feature-value">${players[i].dribbling}</span>
+            <span class="player-feature-title">DRI</span>
+            </span>
+            <span>
+            <span class="player-feature-value">${players[i].defending}</span>
+            <span class="player-feature-title">DEF</span>
+            </span>
+            <span>
+            <span class="player-feature-value">${players[i].physical}</span>
+            <span class="player-feature-title">PHY</span>
+            </span>
+            </div>`
+            else features = `       
+            <div class="player-features-col">
+            <span>
+            <span class="player-feature-value">${players[i].diving}</span>
+            <span class="player-feature-title">DIV</span>
+            </span>
+            <span>
+            <span class="player-feature-value">${players[i].handling}</span>
+            <span class="player-feature-title">HAN</span>
+            </span>
+            <span>
+            <span class="player-feature-value">${players[i].kicking}</span>
+            <span class="player-feature-title">KIC</span>
+            </span>
+            </div>
+            <div class="player-features-col">
+            <span>
+            <span class="player-feature-value">${players[i].reflexes}</span>
+            <span class="player-feature-title">REF</span>
+            </span>
+            <span>
+            <span class="player-feature-value">${players[i].speed}</span>
+            <span class="player-feature-title">SPE</span>
+            </span>
+            <span>
+            <span class="player-feature-value">${players[i].positioning}</span>
+            <span class="player-feature-title">PST</span>
+            </span>
+            </div>`
         card.insertAdjacentHTML('afterbegin',`
             <div class="fut-player-card" draggable="true">
             <div class="player-card-top">
@@ -747,34 +805,7 @@ function displayPlayers(players) {
             <span class="player-rating text-center">${players[i].rating}</span> 
             </span>
             <div class="player-features ">
-            <div class="player-features-col">
-            <span>
-            <span class="player-feature-value">97</span>
-            <span class="player-feature-title">PAC</span>
-            </span>
-            <span>
-            <span class="player-feature-value">95</span>
-            <span class="player-feature-title">SHO</span>
-            </span>
-            <span>
-            <span class="player-feature-value">94</span>
-            <span class="player-feature-title">PAS</span>
-            </span>
-            </div>
-            <div class="player-features-col">
-            <span>
-            <span class="player-feature-value">99</span>
-            <span class="player-feature-title">DRI</span>
-            </span>
-            <span>
-            <span class="player-feature-value">35</span>
-            <span class="player-feature-title">DEF</span>
-            </span>
-            <span>
-            <span class="player-feature-value">68</span>
-            <span class="player-feature-title">PHY</span>
-            </span>
-            </div>
+            ${features}
             </div>
             </div>
         </div>
