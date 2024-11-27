@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/output.css">
+    <title>fut</title>
+</head>
+<body>
+    <header>
+        <div class="cnt max-w-[1280px] mx-auto">
+            <nav class="w-full h-14 bg-stone-700"></nav>
+            <main class="main-app w-full flex relative">
+                <form class="form-add-player absolute left-1/2 translate-x-[-50%] z-50 bg-stone-900 grid grid-cols-2 gap-4 text-white p-6 p-4 hidden">
+                    <!-- Player Name -->
+                    <div class="flex flex-col gap-4 items-center items-center">
+                        <label for="  name" class="mr-2">Player Name:</label>
+                        <input type="text" id="name" name="name" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                    
+                    <!-- Player Photo URL -->
+                    <div class="flex flex-col gap-4 items-center  items-center">
+                        <label for="photo" class="mr-2">Player Photo URL:</label>
+                        <input type="url" id="photo" name="photo" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                    
+                    <!-- Position -->
+                    <div class="flex flex-col gap-4 items-center  items-center">
+                        <label for="position" class="mr-2">Position:</label>
+                        <input type="text" id="position" name="position" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                    
+                    <!-- Nationality -->
+                    <div class="flex flex-col gap-4 items-center  items-center">
+                        <label for="nationality" class="mr-2">Nationality:</label>
+                        <input type="text" id="nationality" name="nationality" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                    
+                    <!-- Flag URL -->
+                    <div class="flex flex-col gap-4 items-center  items-center">
+                        <label for="flag" class="mr-2">Flag URL:</label>
+                        <input type="url" id="flag" name="flag" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                    
+                    <!-- Club -->
+                    <div class="flex flex-col gap-4 items-center  items-center">
+                        <label for="club" class="mr-2">Club:</label>
+                        <input type="text" id="club" name="club" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                    
+                    <!-- Club Logo URL -->
+                    <div class="flex flex-col gap-4 items-center  items-center">
+                        <label for="logo" class="mr-2">Club Logo URL:</label>
+                        <input type="url" id="logo" name="logo" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <div class="col-span-2 text-center mt-4">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Player</button>
+                        <button class="btn-close-form bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                    </div>
+                </form>
+                <form class="form-modify-player absolute left-1/2 translate-x-[-50%] z-50 bg-stone-900 grid grid-cols-2 gap-4 text-white p-6 p-4 hidden">
+                    <!-- Rating -->
+                    <div class="flex flex-col gap-4 items-center">
+                        <label for="rating" class="mr-2">Rating:</label>
+                        <input type="number" id="rating" name="rating" value="93" min="1" max="100" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                
+                    <!-- Pace -->
+                    <div class="flex flex-col gap-4 items-center">
+                        <label for="pace" class="mr-2">Pace:</label>
+                        <input type="number" id="pace" name="pace" value="85" min="1" max="100" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                
+                    <!-- Shooting -->
+                    <div class="flex flex-col gap-4 items-center">
+                        <label for="shooting" class="mr-2">Shooting:</label>
+                        <input type="number" id="shooting" name="shooting" value="92" min="1" max="100" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                
+                    <!-- Passing -->
+                    <div class="flex flex-col gap-4 items-center">
+                        <label for="passing" class="mr-2">Passing:</label>
+                        <input type="number" id="passing" name="passing" value="91" min="1" max="100" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                
+                    <!-- Dribbling -->
+                    <div class="flex flex-col gap-4 items-center">
+                        <label for="dribbling" class="mr-2">Dribbling:</label>
+                        <input type="number" id="dribbling" name="dribbling" value="95" min="1" max="100" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                
+                    <!-- Defending -->
+                    <div class="flex flex-col gap-4 items-center">
+                        <label for="defending" class="mr-2">Defending:</label>
+                        <input type="number" id="defending" name="defending" value="35" min="1" max="100" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                
+                    <!-- Physical -->
+                    <div class="flex flex-col gap-4 items-center">
+                        <label for="physical" class="mr-2">Physical:</label>
+                        <input type="number" id="physical" name="physical" value="65" min="1" max="100" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                
+                    <!-- Submit and Cancel Buttons -->
+                    <div class="col-span-2 text-center mt-4">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                        <button type="button" class="btn-close-form bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                    </div>
+                </form>
+                
+                <div class="players-container min-h-[100dvh] basis-[80%] pt-14 flex flex-wrap gap-4 ">
+                    
+                </div>
+                <aside class="sidebar bg-gray-900 basis-[20%]">
+                    <div class="flex flex-col px-4 pt-8">
+                        <button href="./players.html" class='btn-add-player text-white w-fit bg-black mx-auto p-2 hover:bg-slate-600 transition-colors mt-2'>Add Player</button>
+                    </div>
+                </aside>
+            </main>
+        </div>
+        
+    </header>
+    <script src="players.js"></script>
+</body>
+</html>
