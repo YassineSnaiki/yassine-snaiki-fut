@@ -1,9 +1,184 @@
 
 // rw st lw   cdm cm  cb lb rb gk 
 
-
-
-
+const currentTeam = [
+    {
+        name: "Jan Oblak",
+        photo: "https://cdn.sofifa.net/players/200/389/25_120.png",
+        position: "GK",
+        nationality: "Slovenia",
+        flag: "https://cdn.sofifa.net/flags/si.png",
+        club: "Atletico Madrid",
+        logo: "https://cdn.sofifa.net/meta/team/7980/120.png",
+        rating: 91,
+        diving: 89,
+        handling: 90,
+        kicking: 78,
+        reflexes: 92,
+        speed: 50,
+        positioning: 88
+      },
+      {
+        name: "Alphonso Davies",
+        photo: "https://cdn.sofifa.net/players/234/396/25_120.png",
+        position: "LB",
+        nationality: "Canada",
+        flag: "https://cdn.sofifa.net/flags/ca.png",
+        club: "Bayern Munich",
+        logo: "https://cdn.sofifa.net/meta/team/503/120.png",
+        rating: 84,
+        pace: 96,
+        shooting: 68,
+        passing: 77,
+        dribbling: 82,
+        defending: 76,
+        physical: 77
+      },
+      {
+        name: "Antonio Rudiger",
+        photo: "https://cdn.sofifa.net/players/205/452/25_120.png",
+        position: "CB",
+        nationality: "Germany",
+        flag: "https://cdn.sofifa.net/flags/de.png",
+        club: "Real Madrid",
+        logo: "https://cdn.sofifa.net/meta/team/3468/120.png",
+        rating: 88,
+        pace: 82,
+        shooting: 55,
+        passing: 73,
+        dribbling: 70,
+        defending: 86,
+        physical: 86
+      },
+      {
+        name: "Virgil van Dijk",
+        photo: "https://cdn.sofifa.net/players/203/376/25_120.png",
+        position: "CB",
+        nationality: "Netherlands",
+        flag: "https://cdn.sofifa.net/flags/nl.png",
+        club: "Liverpool",
+        logo: "https://cdn.sofifa.net/meta/team/8/120.png",
+        rating: 90,
+        pace: 75,
+        shooting: 60,
+        passing: 70,
+        dribbling: 72,
+        defending: 92,
+        physical: 86
+      },
+      {
+        name: "Antonio Rudiger",
+        photo: "https://cdn.sofifa.net/players/205/452/25_120.png",
+        position: "CB",
+        nationality: "Germany",
+        flag: "https://cdn.sofifa.net/flags/de.png",
+        club: "Real Madrid",
+        logo: "https://cdn.sofifa.net/meta/team/3468/120.png",
+        rating: 88,
+        pace: 82,
+        shooting: 55,
+        passing: 73,
+        dribbling: 70,
+        defending: 86,
+        physical: 86
+      },
+      {
+        name: "Achraf Hakimi",
+        photo: "https://cdn.sofifa.net/players/235/212/25_120.png",
+        position: "RB",
+        nationality: "Morocco",
+        flag: "https://cdn.sofifa.net/flags/ma.png",
+        club: "Paris Saint-Germain",
+        logo: "https://cdn.sofifa.net/meta/team/591/120.png",
+        rating: 84,
+        pace: 91,
+        shooting: 76,
+        passing: 80,
+        dribbling: 80,
+        defending: 75,
+        physical: 78
+      },
+      {
+        name: "Kevin De Bruyne",
+        photo: "https://cdn.sofifa.net/players/192/985/25_120.png",
+        position: "CM",
+        nationality: "Belgium",
+        flag: "https://cdn.sofifa.net/flags/be.png",
+        club: "Manchester City",
+        logo: "https://cdn.sofifa.net/players/239/085/25_120.png",
+        rating: 91,
+        pace: 74,
+        shooting: 86,
+        passing: 93,
+        dribbling: 88,
+        defending: 64,
+        physical: 78
+      },
+      {
+        name: "N'Golo Kanté",
+        photo: "https://cdn.sofifa.net/players/215/914/25_120.png",
+        position: "CDM",
+        nationality: "France",
+        flag: "https://cdn.sofifa.net/flags/fr.png",
+        club: "Al-Ittihad",
+        logo: "https://cdn.sofifa.net/meta/team/476/120.png",
+        rating: 87,
+        pace: 77,
+        shooting: 66,
+        passing: 75,
+        dribbling: 82,
+        defending: 88,
+        physical: 82
+      },
+      {
+        name: "Luka Modrić",
+        photo: "https://cdn.sofifa.net/players/177/003/25_120.png",
+        position: "CM",
+        nationality: "Croatia",
+        flag: "https://cdn.sofifa.net/flags/hr.png",
+        club: "Real Madrid",
+        logo: "https://cdn.sofifa.net/meta/team/3468/120.png",
+        rating: 88,
+        pace: 74,
+        shooting: 78,
+        passing: 89,
+        dribbling: 90,
+        defending: 72,
+        physical: 65
+      },
+      {
+        name: "Neymar Jr",
+        photo: "https://cdn.sofifa.net/players/190/871/25_120.png",
+        position: "LW",
+        nationality: "Brazil",
+        flag: "https://cdn.sofifa.net/flags/br.png",
+        club: "Al-Hilal",
+        logo: "https://cdn.sofifa.net/meta/team/7011/120.png",
+        rating: 90,
+        pace: 91,
+        shooting: 83,
+        passing: 86,
+        dribbling: 94,
+        defending: 37,
+        physical: 61
+      },
+      {
+        name: "Lionel Messi",
+        photo: "https://cdn.sofifa.net/players/158/023/25_120.png",
+        position: "RW",
+        nationality: "Argentina",
+        flag: "https://cdn.sofifa.net/flags/ar.png",
+        club: "Inter Miami",
+        logo: "https://cdn.sofifa.net/meta/team/239235/120.png",
+        rating: 93,
+        pace: 85,
+        shooting: 92,
+        passing: 91,
+        dribbling: 95,
+        defending: 35,
+        physical: 65
+      },
+]
 const players= [
       {
         name: "Lionel Messi",
@@ -326,7 +501,7 @@ const players= [
         physical: 63
       },
       {
-        name: "Trent Alexander-Arnold",
+        name: "Trent Alex-Arnold",
         photo: "https://cdn.sofifa.net/players/231/281/25_120.png",
         position: "RB",
         nationality: "England",
@@ -437,14 +612,61 @@ const formationSelection = document.querySelector('.formation-selection')
 formationSelection.addEventListener('input',e=>{
     if(e.target.value === "") return;
     const formation = e.target.value;
-    makeLayout(formation,layout);
-    
+    makeLayout(formation,layout);  
 })
 
 
 
 const card = document.createElement('div');
 card.classList.add("player-card","basis-[15%]");
+
+
+makeLayout("5-3-2",layout)  
+    const formationForm= document.querySelector('.formation-form');
+    let currCard = null;
+    layout.addEventListener('click',e=>{
+        if(!e.target.closest('.player-card')) return;
+    currCard = e.target.closest('.player-card');
+    layout.querySelectorAll('.player-card').forEach(card=>card.classList.remove('selected-card'));
+    currCard.classList.add('selected-card');
+    const list = formationForm.querySelector('.change-players');
+    list.innerHTML = "<h3 class='text-white text-center'>Select Player :</h3>";
+    let arr;
+    console.log(currCard.dataset.role);
+    
+    if(currCard.dataset.role === "GK") arr = goalKeepers;
+    else if (currCard.dataset.role === "LB" || currCard.dataset.role === 'CB' || currCard.dataset.role === 'RB') arr = backPlayers;
+    else if (currCard.dataset.role === "CM" || currCard.dataset.role === 'CDM') arr = middlePlayers;
+    else if (currCard.dataset.role === "ST" || currCard.dataset.role === 'LW' || currCard.dataset.role === 'RW') arr = attackPlayers;
+    arr.forEach(p=>{
+        if(!currentTeam.find(el=>el.name === p.name))
+            list.insertAdjacentHTML('beforeend',`
+        <li class="text-white"><button class="btn-select-player cursor-pointer hover:bg-slate-800 w-full bg-slate-600 transition-colors">${p.name}</button></li>
+        `)
+    })
+    list.insertAdjacentHTML('beforeend',"<button class='btn-close-choice text-white w-fit bg-black mx-auto p-2 hover:bg-slate-600 transition-colors'>Cancel</button>")
+    list.querySelector('.btn-close-choice').addEventListener('click',e=>{
+        e.preventDefault();
+        formationForm.querySelector('.change-players').innerHTML = "";
+    })
+})
+
+
+formationForm.querySelector('.change-players').addEventListener('click',e=>{
+    e.preventDefault()
+    if(!e.target.matches('.btn-select-player')) return;
+    displayPlayer(currCard,players.find(p=> p.name === e.target.textContent))
+    formationForm.querySelector('.change-players').innerHTML = "";
+})
+
+
+
+
+
+
+
+
+
 
 function makeLayout(formation,layout) {
     const frmArr = formation.split('-').map(el=>+el);
@@ -454,7 +676,7 @@ function makeLayout(formation,layout) {
     const GKElement = card.cloneNode(true);
     GKElement.dataset.role = 'GK'; 
     GKRow.append(GKElement)
-
+    
     layout.prepend(GKRow);
     frmArr.forEach((num,i)=>{
         const cardsRow = document.createElement('div');
@@ -493,133 +715,79 @@ function makeLayout(formation,layout) {
         }
         layout.prepend(cardsRow)
     })
-    displayPlayers(players);
+    displayPlayers(currentTeam.reverse());
 }
-
-makeLayout("5-3-2",layout)
-
 function displayPlayers(players) {
     const cards = document.querySelectorAll('.player-card');
-    const selectedPlayers = [];
+    
     cards.forEach((card,i)=>{
-        // if(card.dataset.role==="G")
-        //    selectedPlayers.push(players.find(p=>p.position === "GK" && !selectedPlayers.find(el=>el.name === p.name)));
-        // else if(card.dataset.role==="D")
-        //    selectedPlayers.push(players.find(p=>p.position === "CB" && !selectedPlayers.find(el=>el.name === p.name)));
-        // else if(card.dataset.role==="CDM")
-        //    selectedPlayers.push(players.find(p=>p.position === "CDM" && !selectedPlayers.find(el=>el.name === p.name)));
-        // else if(card.dataset.role==="CM")
-        //    selectedPlayers.push(players.find(p=>p.position === "CM" && !selectedPlayers.find(el=>el.name === p.name)));
-        // else if(card.dataset.role==="M")
-        //    selectedPlayers.push(players.find(p=>p.position === "CM" || p.position === "CDM" && !selectedPlayers.find(el=>el.name === p.name)));
-        // else if(card.dataset.role==="A")
-        //    selectedPlayers.push(players.find(p=>p.position === "ST" || p.position === "LW" || p.position === "RW" && !selectedPlayers.find(el=>el.name === p.name)));
+        card.dataset.name = players[i].name;
         card.insertAdjacentHTML('afterbegin',`
-             <div class="fut-player-card">
-             <div class="player-card-top">
-          <div class="player-master-info">
-          
-          </div>
-          <div class="player-picture">
+            <div class="fut-player-card" draggable="true">
+            <div class="player-card-top">
+            <div class="player-master-info">
+            
+            </div>
+            <div class="player-picture">
             <img  src="${players[i].photo}" alt="Messi" draggable="false">
             <div class="player-extra">
             </div>
-          </div>
-        </div>
-        <!-- Player Card Bottom -->
-        <div class="player-card-bottom">
-          <div class="player-info">
+            </div>
+            </div>
+            <!-- Player Card Bottom -->
+            <div class="player-card-bottom">
+            <div class="player-info">
             <!-- Player Name -->
             <div class="player-name">
-              <span>${players[i].name.split(' ')[0][0]+" "+players[i].name.split(' ')[1]}</span>
+            <span>${players[i].name.split(' ')[0][0]+" "+players[i].name.split(' ')[1]}</span>
             </div>
             <!-- Player Features -->
             <span class="flex w-full justify-around text-[8px]">
-                <span class="player-position text-center">${players[i].position}</span>
-                <span class="player-rating text-center">${players[i].rating}</span> 
+            <span class="player-position text-center">${players[i].position}</span>
+            <span class="player-rating text-center">${players[i].rating}</span> 
             </span>
             <div class="player-features ">
-              <div class="player-features-col">
-                <span>
-                  <span class="player-feature-value">97</span>
-                  <span class="player-feature-title">PAC</span>
-                </span>
-                <span>
-                  <span class="player-feature-value">95</span>
-                  <span class="player-feature-title">SHO</span>
-                </span>
-                <span>
-                  <span class="player-feature-value">94</span>
-                  <span class="player-feature-title">PAS</span>
-                </span>
-              </div>
-              <div class="player-features-col">
-                <span>
-                  <span class="player-feature-value">99</span>
-                  <span class="player-feature-title">DRI</span>
-                </span>
-                <span>
-                  <span class="player-feature-value">35</span>
-                  <span class="player-feature-title">DEF</span>
-                </span>
-                <span>
-                  <span class="player-feature-value">68</span>
-                  <span class="player-feature-title">PHY</span>
-                </span>
-              </div>
+            <div class="player-features-col">
+            <span>
+            <span class="player-feature-value">97</span>
+            <span class="player-feature-title">PAC</span>
+            </span>
+            <span>
+            <span class="player-feature-value">95</span>
+            <span class="player-feature-title">SHO</span>
+            </span>
+            <span>
+            <span class="player-feature-value">94</span>
+            <span class="player-feature-title">PAS</span>
+            </span>
             </div>
-          </div>
+            <div class="player-features-col">
+            <span>
+            <span class="player-feature-value">99</span>
+            <span class="player-feature-title">DRI</span>
+            </span>
+            <span>
+            <span class="player-feature-value">35</span>
+            <span class="player-feature-title">DEF</span>
+            </span>
+            <span>
+            <span class="player-feature-value">68</span>
+            <span class="player-feature-title">PHY</span>
+            </span>
+            </div>
+            </div>
+            </div>
         </div>
-             </div>
-            `)
+        </div>
+        `)
     })
 }
 
-
-
-
-// function test() {
-//     const card = [...document.querySelectorAll('.player-card')].find(el=>el.dataset.role === 'LW'); 
-//     displayPlayer(card,players[10]);
-// }
-
-
 function displayPlayer(card,player) {
-    card.querySelector('.player-picture').querySelector('img').src = player.photo;
-    card.querySelector('.player-name').querySelector('span').textContent = player.name.split(' ')[0][0]+" "+player.name.split(' ')[1];
-    card.querySelector('.player-position').textContent = player.position;
-    card.querySelector('.player-rating').textContent = player.rating;
-}
-
-const formationForm= document.querySelector('.formation-form');
-
-
-let currCard = null;
-
-layout.addEventListener('click',e=>{
-    if(!e.target.closest('.player-card')) return;
-    currCard = e.target.closest('.player-card');
-    layout.querySelectorAll('.player-card').forEach(card=>card.classList.remove('selected-card'));
-    currCard.classList.add('selected-card');
-    const list = formationForm.querySelector('.change-players');
-    list.innerHTML = "";
-    let arr;
-    console.log(currCard.dataset.role);
-    
-    if(currCard.dataset.role === "GK") arr = goalKeepers;
-    else if (currCard.dataset.role === "LB" || currCard.dataset.role === 'CB' || currCard.dataset.role === 'RB') arr = backPlayers;
-    else if (currCard.dataset.role === "CM" || currCard.dataset.role === 'CDM') arr = middlePlayers;
-    else if (currCard.dataset.role === "ST" || currCard.dataset.role === 'LW' || currCard.dataset.role === 'RW') arr = attackPlayers;
-    arr.forEach(p=>list.insertAdjacentHTML('beforeend',`
-        <li class="text-white"><button class="btn-select-player cursor-pointer hover:bg-slate-800">${p.name}</button></li>
-        `))
-    
-})
-
-
-formationForm.querySelector('.change-players').addEventListener('click',e=>{
-    e.preventDefault()
-    if(!e.target.matches('.btn-select-player')) return;
-
-    displayPlayer(currCard,players.find(p=> p.name === e.target.textContent))
-})
+        card.querySelector('.player-picture').querySelector('img').src = player.photo;
+        card.querySelector('.player-name').querySelector('span').textContent = player.name.split(' ')[0][0]+" "+player.name.split(' ')[1];
+        card.querySelector('.player-position').textContent = player.position;
+        card.querySelector('.player-rating').textContent = player.rating;
+        currentTeam[currentTeam.findIndex(el=>el.name===card.dataset.name)] = player;
+        card.dataset.name = player.name
+    }

@@ -28,6 +28,7 @@
 }
 .fut-player-card {
     transform: rotateX(-25deg);
+    filter: brightness(.8);
 }
 .fut-player-card:hover {
     cursor: pointer;
@@ -35,7 +36,8 @@
 }
 
 .selected-card {
-    box-shadow: 0 -5px 0 0px rgb(255, 255, 255);
+    box-shadow: 0 -5px 0 -2px gold;
+    filter: brightness(1.4);
 }
 /* card styles */
 
