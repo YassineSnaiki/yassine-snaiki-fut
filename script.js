@@ -14,6 +14,7 @@ const changeList = formationForm.querySelector('.change-players');
 
 const card = document.createElement('div');
 card.classList.add("player-card","basis-[15%]","transition");
+card.setAttribute('draggable',true);
 
 
 
@@ -79,6 +80,8 @@ function makeLayout(formation,layout) {
     
     layout.prepend(GKRow);
     frmArr.forEach((num,i)=>{
+        console.log(num);
+        
         const cardsRow = document.createElement('div');
         cardsRow.dataset.num = i;
         cardsRow.classList.add("cards-row","flex","justify-around","basis-[20%]");
@@ -126,69 +129,69 @@ function displayPlayers(players) {
         if(players[i].position !== 'GK')
           features = `<div class="player-features-col">
             <span>
-            <span class="player-feature-value">${players[i].pace}</span>
+            <span class="player-feature-value feature-pace">${players[i].pace}</span>
             <span class="player-feature-title">PAC</span>
             </span>
             <span>
-            <span class="player-feature-value">${players[i].shooting}</span>
+            <span class="player-feature-value feature-shooting">${players[i].shooting}</span>
             <span class="player-feature-title">SHO</span>
             </span>
             <span>
-            <span class="player-feature-value">${players[i].passing}</span>
+            <span class="player-feature-value feature-passing">${players[i].passing}</span>
             <span class="player-feature-title">PAS</span>
             </span>
             </div>
             <div class="player-features-col">
             <span>
-            <span class="player-feature-value">${players[i].dribbling}</span>
+            <span class="player-feature-value feature-dribbling">${players[i].dribbling}</span>
             <span class="player-feature-title">DRI</span>
             </span>
             <span>
-            <span class="player-feature-value">${players[i].defending}</span>
+            <span class="player-feature-value feature-defending">${players[i].defending}</span>
             <span class="player-feature-title">DEF</span>
             </span>
             <span>
-            <span class="player-feature-value">${players[i].physical}</span>
+            <span class="player-feature-value feature-physical">${players[i].physical}</span>
             <span class="player-feature-title">PHY</span>
             </span>
             </div>`
             else features = `       
             <div class="player-features-col">
             <span>
-            <span class="player-feature-value">${players[i].diving}</span>
+            <span class="player-feature-value feature-diving">${players[i].diving}</span>
             <span class="player-feature-title">DIV</span>
             </span>
             <span>
-            <span class="player-feature-value">${players[i].handling}</span>
+            <span class="player-feature-value feature-handling">${players[i].handling}</span>
             <span class="player-feature-title">HAN</span>
             </span>
             <span>
-            <span class="player-feature-value">${players[i].kicking}</span>
+            <span class="player-feature-value feature-kicking">${players[i].kicking}</span>
             <span class="player-feature-title">KIC</span>
             </span>
             </div>
             <div class="player-features-col">
             <span>
-            <span class="player-feature-value">${players[i].reflexes}</span>
+            <span class="player-feature-value feature-reflexes">${players[i].reflexes}</span>
             <span class="player-feature-title">REF</span>
             </span>
             <span>
-            <span class="player-feature-value">${players[i].speed}</span>
+            <span class="player-feature-value feature-speed">${players[i].speed}</span>
             <span class="player-feature-title">SPE</span>
             </span>
             <span>
-            <span class="player-feature-value">${players[i].positioning}</span>
+            <span class="player-feature-value feature-positioning">${players[i].positioning}</span>
             <span class="player-feature-title">PST</span>
             </span>
             </div>`
         card.insertAdjacentHTML('afterbegin',`
-            <div class="fut-player-card" draggable="true">
+            <div class="fut-player-card">
             <div class="player-card-top">
             <div class="player-master-info">
             
             </div>
             <div class="player-picture">
-            <img  src="${players[i].photo}" alt="Messi" draggable="false">
+            <img  src="${players[i].photo}" alt="player" draggable="false">
             <div class="player-extra">
             </div>
             </div>
@@ -220,6 +223,23 @@ function displayPlayer(card,player) {
         card.querySelector('.player-name').querySelector('span').textContent = player.name.split(' ')[0][0]+" "+player.name.split(' ')[1];
         card.querySelector('.player-position').textContent = player.position;
         card.querySelector('.player-rating').textContent = player.rating;
+        if(card.dataset.role === 'GK'){
+            card.querySelector('.feature-diving').textContent = player.diving;
+            card.querySelector('.feature-handling').textContent = player.handling;
+            card.querySelector('.feature-kicking').textContent = player.kicking;
+            card.querySelector('.feature-reflexes').textContent = player.reflexes;
+            card.querySelector('.feature-speed').textContent = player.speed;
+            card.querySelector('.feature-positioning').textContent = player.positioning;
+
+        }else {
+            card.querySelector('.feature-pace').textContent = player.pace;
+            card.querySelector('.feature-shooting').textContent = player.shooting;
+            card.querySelector('.feature-passing').textContent = player.passing;
+            card.querySelector('.feature-dribbling').textContent = player.dribbling;
+            card.querySelector('.feature-defending').textContent = player.defending;
+            card.querySelector('.feature-physical').textContent = player.physical;
+        }
+
         currentTeam[currentTeam.findIndex(el=>el.name===card.dataset.name)] = player;
         card.dataset.name = player.name
         localStorage.setItem('currentTeam',JSON.stringify(currentTeam))

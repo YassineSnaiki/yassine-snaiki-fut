@@ -2637,11 +2637,11 @@ video {
 
 .fut-player-card:hover {
   cursor: pointer;
-  transform: rotateX(-20deg) scale(1.1);
+  filter: brightness(1.4);
 }
 
-.selected-card {
-  box-shadow: 0 -5px 0 -2px gold;
+.selected-card .fut-player-card {
+  transform: rotateX(0);
   filter: brightness(1.4);
 }
 

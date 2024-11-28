@@ -9,11 +9,8 @@ const btnDelete = document.querySelector('.btn-delete-player');
 let selectedPlayerElement = null;
 
 
-
-
 displayAll();
 
-    
 
 
 btnCloseForm.forEach(btn=>{
