@@ -5,6 +5,7 @@ const playersContainer = document.querySelector('.players-container');
 const btnAddPlayer = document.querySelector('.btn-add-player');
 const formAddPlayer = document.querySelector('.form-add-player');
 const formModifyPlayer = document.querySelector('.form-modify-player');
+const formModifyKeeper = document.querySelector('.form-modify-keeper');
 const btnCloseForm = document.querySelectorAll('.btn-close-form');
 const btnDelete = document.querySelector('.btn-delete-player');
 let selectedPlayerElement = null;
@@ -20,6 +21,7 @@ btnCloseForm.forEach(btn=>{
         
         formAddPlayer.classList.add('hidden')
         formModifyPlayer.classList.add('hidden')
+        formModifyKeeper.classList.add('hidden')
         playersContainer.querySelectorAll('.fut-player-card').forEach(p=>p.classList.remove('selected-card'))
     })
 })
@@ -31,25 +33,37 @@ btnAddPlayer.addEventListener('click',e=>{
 playersContainer.addEventListener('click',e=>{
     if(!e.target.closest('.fut-player-card')) return;
     selectedPlayerElement = e.target.closest('.fut-player-card'); 
-    console.log(selectedPlayerElement);
-    
     playersContainer.querySelectorAll('.fut-player-card').forEach(p=>p.classList.remove('selected-card'))
-    selectedPlayerElement.classList.add('selected-card')
-    formModifyPlayer.classList.remove('hidden');
+    selectedPlayerElement.classList.add('selected-card');
     const selectedPlayer = players.find(p=>p.name === selectedPlayerElement.dataset.name);
-    formModifyPlayer.querySelector('img').src = selectedPlayer.photo;
-    document.getElementById('rating').value = selectedPlayer.rating;
-    document.getElementById('pace').value = selectedPlayer.pace;
-    document.getElementById('shooting').value = selectedPlayer.shooting;
-    document.getElementById('passing').value =selectedPlayer.passing;
-    document.getElementById('dribbling').value = selectedPlayer.dribbling;
-    document.getElementById('defending').value = selectedPlayer.defending;
-    document.getElementById('physical').value = selectedPlayer.physical;
+    const role = selectedPlayer.position;
+    if(role!=='GK') {
+        formModifyPlayer.classList.remove('hidden');
+        formModifyPlayer.querySelector('img').src = selectedPlayer.photo;
+        document.querySelector('#rating').value = selectedPlayer.rating;
+        document.querySelector('#pace').value = selectedPlayer.pace;
+        document.querySelector('#shooting').value = selectedPlayer.shooting;
+        document.querySelector('#passing').value =selectedPlayer.passing;
+        document.querySelector('#dribbling').value = selectedPlayer.dribbling;
+        document.querySelector('#defending').value = selectedPlayer.defending;
+        document.querySelector('#physical').value = selectedPlayer.physical;
+    }else {
+        formModifyKeeper.classList.remove('hidden');
+        formModifyKeeper.querySelector('img').src = selectedPlayer.photo;
+        
+        formModifyKeeper.querySelector('#rating').value = selectedPlayer.rating;
+        formModifyKeeper.querySelector('#diving').value = selectedPlayer.diving;
+        formModifyKeeper.querySelector('#handling').value = selectedPlayer.handling;
+        formModifyKeeper.querySelector('#kicking').value =selectedPlayer.kicking;
+        formModifyKeeper.querySelector('#reflexes').value = selectedPlayer.reflexes;
+        formModifyKeeper.querySelector('#speed').value = selectedPlayer.speed;
+        formModifyKeeper.querySelector('#positioning').value = selectedPlayer.positioning;
+    }
     
 })
 
 formAddPlayer.addEventListener('submit', (e) => {
-    e.preventDefault(); // Prevent the form from submitting
+    e.preventDefault(); 
     formAddPlayer.classList.add('hidden');
     const newPlayer = {
         name: document.getElementById('name').value,
@@ -76,24 +90,48 @@ formAddPlayer.addEventListener('submit', (e) => {
 formModifyPlayer.addEventListener('submit',e=>{
     formModifyPlayer.classList.add('hidden');
     e.preventDefault();
-    const rating =document.getElementById('rating').value;
-    const pace =document.getElementById('pace').value;
-    const shooting =document.getElementById('shooting').value;
-    const passing =document.getElementById('passing').value;
-    const dribbling =document.getElementById('dribbling').value;
-    const defending =document.getElementById('defending').value;
-    const physical =document.getElementById('physical').value;
     const selectedPlayer = players.find(p=>p.name === selectedPlayerElement.dataset.name);
-    selectedPlayer.rating = rating;
-    selectedPlayer.shooting = shooting;
-    selectedPlayer.pace = pace;
-    selectedPlayer.passing = passing;
-    selectedPlayer.dribbling = dribbling;
-    selectedPlayer.defending = defending;
-    selectedPlayer.physical = physical;
+    const rating =formModifyPlayer.querySelector('#rating').value;
+        const pace =document.getElementById('pace').value;
+        const shooting =document.getElementById('shooting').value;
+        const passing =document.getElementById('passing').value;
+        const dribbling =document.getElementById('dribbling').value;
+        const defending =document.getElementById('defending').value;
+        const physical =document.getElementById('physical').value;
+        selectedPlayer.rating = rating;
+        selectedPlayer.shooting = shooting;
+        selectedPlayer.pace = pace;
+        selectedPlayer.passing = passing;
+        selectedPlayer.dribbling = dribbling;
+        selectedPlayer.defending = defending;
+        selectedPlayer.physical = physical;
+    
     localStorage.setItem('players',JSON.stringify(players));
     displayAll();
 })
+formModifyKeeper.addEventListener('submit',e=>{
+    formModifyKeeper.classList.add('hidden');
+    e.preventDefault();
+    const selectedPlayer = players.find(p=>p.name === selectedPlayerElement.dataset.name);
+    const rating =formModifyKeeper.querySelector('#rating').value;
+    const kicking =document.getElementById('kicking').value;
+    const handling =document.getElementById('handling').value;
+    const diving =document.getElementById('diving').value;
+    const reflexes =document.getElementById('reflexes').value;
+    const speed =document.getElementById('speed').value;
+    const positioning =document.getElementById('positioning').value;
+    selectedPlayer.rating = rating;
+    selectedPlayer.kicking = kicking;
+    selectedPlayer.handling = handling;
+    selectedPlayer.diving = diving;
+    selectedPlayer.reflexes = reflexes;
+    selectedPlayer.speed = speed;
+    selectedPlayer.positioning = positioning;
+
+localStorage.setItem('players',JSON.stringify(players));
+displayAll();
+})
+
 
 btnDelete.addEventListener('click',e=>{
   e.preventDefault();

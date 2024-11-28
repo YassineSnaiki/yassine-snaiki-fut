@@ -113,6 +113,61 @@
                         
                     </div>
                 </form>
+                <form class="form-modify-keeper absolute left-1/2 translate-x-[-50%] z-50 bg-stone-900 grid grid-cols-2 gap-4 text-white p-6 p-4 hidden">
+                    <!-- Rating -->
+                    <div class="flex flex-col items-center ">
+                        <img/>
+                        <h2 class="name"></h2>
+                        </div>
+                    <div class="flex flex-col gap-4 items-center">
+                        <label for="rating" class="mr-2">Rating:</label>
+                        <input type="number" id="rating" name="rating"  min="1" max="100" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                
+                    <!-- Pace -->
+                    <div class="flex flex-col gap-4 items-center">
+                        <label for="pace" class="mr-2">Diving:</label>
+                        <input type="number" id="diving" name="pace"  min="1" max="100" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                
+                    <!-- Shooting -->
+                    <div class="flex flex-col gap-4 items-center">
+                        <label for="shooting" class="mr-2">Handling:</label>
+                        <input type="number" id="handling" name="shooting"  min="1" max="100" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                
+                    <!-- Passing -->
+                    <div class="flex flex-col gap-4 items-center">
+                        <label for="passing" class="mr-2">kicking:</label>
+                        <input type="number" id="kicking" name="passing"  min="1" max="100" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                
+                    <!-- Dribbling -->
+                    <div class="flex flex-col gap-4 items-center">
+                        <label for="dribbling" class="mr-2">Reflexes:</label>
+                        <input type="number" id="reflexes" name="dribbling"  min="1" max="100" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                
+                    <!-- Defending -->
+                    <div class="flex flex-col gap-4 items-center">
+                        <label for="defending" class="mr-2">Speed:</label>
+                        <input type="number" id="speed" name="defending"  min="1" max="100" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                
+                    <!-- Physical -->
+                    <div class="flex flex-col gap-4 items-center">
+                        <label for="physical" class="mr-2">Positioning:</label>
+                        <input type="number" id="positioning" name="physical"  min="1" max="100" required class="p-2 bg-stone-700 text-white rounded">
+                    </div>
+                
+                    <!-- Submit and Cancel Buttons -->
+                    <div class="col-span-2 text-center mt-4">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                        <button class="btn-delete-player bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                        <button class="btn-close-form bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                        
+                    </div>
+                </form>
                 
                 <div class="players-container min-h-[100dvh] basis-[80%] pt-14 flex justify-center flex-wrap gap-4 ">
                     
