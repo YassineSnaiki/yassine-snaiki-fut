@@ -80,8 +80,6 @@ function makeLayout(formation,layout) {
     
     layout.prepend(GKRow);
     frmArr.forEach((num,i)=>{
-        console.log(num);
-        
         const cardsRow = document.createElement('div');
         cardsRow.dataset.num = i;
         cardsRow.classList.add("cards-row","flex","justify-around","basis-[20%]");
@@ -219,6 +217,8 @@ function displayPlayers(players) {
 }
 
 function displayPlayer(card,player) {
+    const cardName= card.dataset.name;
+    
         card.querySelector('.player-picture').querySelector('img').src = player.photo;
         card.querySelector('.player-name').querySelector('span').textContent = player.name.split(' ')[0][0]+" "+player.name.split(' ')[1];
         card.querySelector('.player-position').textContent = player.position;
@@ -239,8 +239,14 @@ function displayPlayer(card,player) {
             card.querySelector('.feature-defending').textContent = player.defending;
             card.querySelector('.feature-physical').textContent = player.physical;
         }
-
-        currentTeam[currentTeam.findIndex(el=>el.name===card.dataset.name)] = player;
+        
+        
+       
+        currentTeam[currentTeam.findIndex(el=>el.name===cardName)] = player;
+        
         card.dataset.name = player.name
+      
+
+        
         localStorage.setItem('currentTeam',JSON.stringify(currentTeam))
 }

@@ -19,16 +19,30 @@ layout.addEventListener('dragend', (e) => {
     layout.querySelectorAll('.player-card').forEach(el=>el.classList.remove('selected-card'));
 });
 
-layout.addEventListener('drop',e=>{
-    if(!e.target.closest('.player-card')) return;
-    layout.querySelectorAll('.player-card').forEach(el=>el.classList.remove('selected-card'));
-    if(e.target.closest('.player-card').dataset.role === 'GK' || dragged.dataset.role === 'GK') return;
+layout.addEventListener('drop', e => {
+    if (!e.target.closest('.player-card')) return;
+    layout.querySelectorAll('.player-card').forEach(el => el.classList.remove('selected-card'));
+
+    if (e.target.closest('.player-card').dataset.role === 'GK' || dragged.dataset.role === 'GK') return;
+
     const draggedName = dragged.dataset.name;
-    const dropInName = e.target.closest('.player-card').dataset.name;  
-    const draggedObject = {...currentTeam.find(p=>p.name===draggedName)}
-    const dropInObject = {...currentTeam.find(p=>p.name===dropInName)}
-    
-    displayPlayer(e.target.closest('.player-card'),draggedObject);
-    displayPlayer(dragged,dropInObject);
-})
-    
+    const dropInName = e.target.closest('.player-card').dataset.name;
+
+    const draggedIndex = currentTeam.findIndex(p => p.name === draggedName);
+    const dropInIndex = currentTeam.findIndex(p => p.name === dropInName);
+
+    const draggedObject = currentTeam[draggedIndex];
+    const dropInObject = currentTeam[dropInIndex];
+
+    // Update the DOM
+    displayPlayer(e.target.closest('.player-card'), draggedObject);
+    displayPlayer(dragged, dropInObject);
+
+    // Update the currentTeam array
+    currentTeam[draggedIndex] = dropInObject;
+    currentTeam[dropInIndex] = draggedObject;
+
+    // Save to localStorage
+    localStorage.setItem('currentTeam', JSON.stringify(currentTeam));
+});
+ 

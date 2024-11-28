@@ -1,4 +1,5 @@
 const players= JSON.parse(localStorage.getItem('players'));
+const currentTeam= JSON.parse(localStorage.getItem('currentTeam'));
 
 const playersContainer = document.querySelector('.players-container');
 const btnAddPlayer = document.querySelector('.btn-add-player');
@@ -97,6 +98,7 @@ formModifyPlayer.addEventListener('submit',e=>{
 btnDelete.addEventListener('click',e=>{
   e.preventDefault();
   const selectedIndex = players.findIndex(p=>p.name === selectedPlayerElement.dataset.name);
+  
   players.splice(selectedIndex,1);
   localStorage.setItem('players',JSON.stringify(players));
   formModifyPlayer.classList.add('hidden');
@@ -107,7 +109,8 @@ btnDelete.addEventListener('click',e=>{
 function displayAll(){
     playersContainer.innerHTML = ""
     players.forEach((p,i)=>{
-      if(players[i].position !== 'GK')
+    if(!currentTeam.find(pt=>pt.name === p.name))
+      {if(players[i].position !== 'GK')
       features = `<div class="player-features-col">
             <span>
             <span class="player-feature-value">${players[i].pace}</span>
@@ -196,5 +199,6 @@ function displayAll(){
         </div>
         </div>
             `)
-        })
+        }
+      })
     }
