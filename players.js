@@ -39,6 +39,7 @@ playersContainer.addEventListener('click',e=>{
     const role = selectedPlayer.position;
     if(role!=='GK') {
         formModifyPlayer.classList.remove('hidden');
+        formModifyKeeper.classList.add('hidden');
         formModifyPlayer.querySelector('img').src = selectedPlayer.photo;
         document.querySelector('#rating').value = selectedPlayer.rating;
         document.querySelector('#pace').value = selectedPlayer.pace;
@@ -49,8 +50,8 @@ playersContainer.addEventListener('click',e=>{
         document.querySelector('#physical').value = selectedPlayer.physical;
     }else {
         formModifyKeeper.classList.remove('hidden');
+        formModifyPlayer.classList.add('hidden');
         formModifyKeeper.querySelector('img').src = selectedPlayer.photo;
-        
         formModifyKeeper.querySelector('#rating').value = selectedPlayer.rating;
         formModifyKeeper.querySelector('#diving').value = selectedPlayer.diving;
         formModifyKeeper.querySelector('#handling').value = selectedPlayer.handling;
@@ -238,6 +239,8 @@ function displayAll(){
         </div>
         </div>
             `)
+            
         }
+        
       })
     }

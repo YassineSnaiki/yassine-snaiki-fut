@@ -36,7 +36,7 @@ makeLayout(localStorage.getItem('formation'),layout);
     currCard = e.target.closest('.player-card');
     layout.querySelectorAll('.player-card').forEach(card=>card.classList.remove('selected-card'));
     currCard.classList.add('selected-card');
-    
+    changeList.classList.remove('hidden')
     changeList.innerHTML = "";
     let arr;
     if(currCard.dataset.role === "GK") arr = goalKeepers;
@@ -46,12 +46,13 @@ makeLayout(localStorage.getItem('formation'),layout);
     arr.forEach(p=>{
         if(!currentTeam.find(el=>el.name === p.name))
             changeList.insertAdjacentHTML('beforeend',`
-        <li class="text-white flex items-stretch"><button class="btn-select-player flex justify-between p-1 sm:px-4 items-center cursor-pointer hover:bg-slate-800 w-full bg-slate-600 transition-colors flex-row text-[8px] sm:text-xs lg:text-base xl:text-lg" data-name="${p.name}"><img class="w-6 md:w-10" src="${p.photo}"/><span>${p.name.split(' ').slice(1)}</span> <span>${p.position}</span></button></li>
+        <li class="text-white  mb-2 flex items-stretch"><button class="btn-select-player flex justify-between p-1 px-8 sm:px-4 items-center cursor-pointer hover:bg-slate-800 w-full bg-slate-600 transition-colors flex-row text-2xl sm:text-[8px] lg:text-base xl:text-lg" data-name="${p.name}"><img class="w-20 sm:w-10" src="${p.photo}"/><span>${p.name.split(' ').slice(1)}</span> <span>${p.position}</span></button></li>
         `)
     })
-    changeList.insertAdjacentHTML('beforeend',"<button class='mx-0 sm:mx-auto btn-close-choice text-white w-fit bg-black p-2 hover:bg-slate-600 transition-colors text-xs sm:text-sm lg:text-lg'>Cancel</button>")
+    changeList.insertAdjacentHTML('afterbegin',"<button class='mx-auto w-full text-center btn-close-choice text-white  bg-black p-2 hover:bg-slate-600 transition-colors text-lg sm:text-sm lg:text-lg mb-2'>Cancel</button>")
     changeList.querySelector('.btn-close-choice').addEventListener('click',e=>{
         e.preventDefault();
+        changeList.classList.add('hidden')
         formationForm.querySelector('.change-players').innerHTML = "";
         currCard.classList.remove('selected-card')
     })
@@ -62,6 +63,7 @@ makeLayout(localStorage.getItem('formation'),layout);
 formationForm.querySelector('.change-players').addEventListener('click',e=>{
     e.preventDefault()
     if(!e.target.closest('.btn-select-player')) return;
+    changeList.classList.add('hidden')
     displayPlayer(currCard,players.find(p=> p.name === e.target.closest('.btn-select-player').dataset.name))
     currCard.classList.remove('selected-card')
     formationForm.querySelector('.change-players').innerHTML = "";

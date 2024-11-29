@@ -3,10 +3,13 @@
 @tailwind utilities;
 
 
-.main-app {
+body {
     background-image: url(../images/bb.jpg);
     background-size: cover;
+}
+.main-app {
     position: relative;
+    min-height: 100dvh;
 }
 
 .formation-layout {

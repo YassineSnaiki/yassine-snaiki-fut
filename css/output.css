@@ -667,12 +667,20 @@ video {
   left: 50%;
 }
 
+.top-20 {
+  top: 5rem;
+}
+
 .isolate {
   isolation: isolate;
 }
 
 .isolation-auto {
   isolation: auto;
+}
+
+.z-10 {
+  z-index: 10;
 }
 
 .z-50 {
@@ -731,26 +739,30 @@ video {
   clear: none;
 }
 
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .mx-0 {
   margin-left: 0px;
   margin-right: 0px;
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
+.ml-auto {
+  margin-left: auto;
 }
 
 .mr-2 {
   margin-right: 0.5rem;
-}
-
-.mt-10 {
-  margin-top: 2.5rem;
 }
 
 .mt-2 {
@@ -763,14 +775,6 @@ video {
 
 .mt-5 {
   margin-top: 1.25rem;
-}
-
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-
-.ml-auto {
-  margin-left: auto;
 }
 
 .box-border {
@@ -872,8 +876,8 @@ video {
   display: none;
 }
 
-.h-\[100dvh\] {
-  height: 100dvh;
+.h-\[655px\] {
+  height: 655px;
 }
 
 .h-\[675px\] {
@@ -885,16 +889,8 @@ video {
   height: fit-content;
 }
 
-.max-h-\[100dvh\] {
-  max-height: 100dvh;
-}
-
-.min-h-\[100dvh\] {
-  min-height: 100dvh;
-}
-
-.w-6 {
-  width: 1.5rem;
+.w-20 {
+  width: 5rem;
 }
 
 .w-\[400px\] {
@@ -926,6 +922,10 @@ video {
   max-width: 1280px;
 }
 
+.max-w-\[700px\] {
+  max-width: 700px;
+}
+
 .flex-shrink {
   flex-shrink: 1;
 }
@@ -952,10 +952,6 @@ video {
 
 .basis-\[20\%\] {
   flex-basis: 20%;
-}
-
-.basis-\[80\%\] {
-  flex-basis: 80%;
 }
 
 .table-auto {
@@ -1473,16 +1469,12 @@ video {
   justify-items: stretch;
 }
 
-.gap-1 {
-  gap: 0.25rem;
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .gap-4 {
   gap: 1rem;
-}
-
-.gap-2 {
-  gap: 0.5rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
@@ -1948,11 +1940,6 @@ video {
   background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1));
 }
 
-.bg-gray-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
-}
-
 .bg-slate-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(71 85 105 / var(--tw-bg-opacity, 1));
@@ -1966,6 +1953,10 @@ video {
 .bg-stone-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(28 25 23 / var(--tw-bg-opacity, 1));
+}
+
+.bg-opacity-50 {
+  --tw-bg-opacity: 0.5;
 }
 
 .decoration-slice {
@@ -2114,6 +2105,11 @@ video {
   padding-right: 1.25rem;
 }
 
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -2187,8 +2183,18 @@ video {
   vertical-align: super;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .text-\[8px\] {
   font-size: 8px;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .text-xs {
@@ -2658,10 +2664,14 @@ video {
   forced-color-adjust: none;
 }
 
-.main-app {
+body {
   background-image: url(../images/bb.jpg);
   background-size: cover;
+}
+
+.main-app {
   position: relative;
+  min-height: 100dvh;
 }
 
 .formation-layout {
@@ -2926,6 +2936,10 @@ aside::-webkit-scrollbar-thumb {
 }
 
 @media (min-width: 640px) {
+  .sm\:static {
+    position: static;
+  }
+
   .sm\:order-1 {
     order: 1;
   }
@@ -2947,8 +2961,12 @@ aside::-webkit-scrollbar-thumb {
     height: 100dvh;
   }
 
-  .sm\:max-h-\[100dvh\] {
-    max-height: 100dvh;
+  .sm\:w-10 {
+    width: 2.5rem;
+  }
+
+  .sm\:w-full {
+    width: 100%;
   }
 
   .sm\:basis-\[25\%\] {
@@ -2957,6 +2975,11 @@ aside::-webkit-scrollbar-thumb {
 
   .sm\:basis-\[75\%\] {
     flex-basis: 75%;
+  }
+
+  .sm\:translate-x-0 {
+    --tw-translate-x: 0px;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
   .sm\:flex-row {
@@ -2971,9 +2994,30 @@ aside::-webkit-scrollbar-thumb {
     align-items: stretch;
   }
 
+  .sm\:gap-1 {
+    gap: 0.25rem;
+  }
+
+  .sm\:bg-transparent {
+    background-color: transparent;
+  }
+
+  .sm\:p-0 {
+    padding: 0px;
+  }
+
   .sm\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .sm\:text-\[8px\] {
+    font-size: 8px;
+  }
+
+  .sm\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .sm\:text-sm {
@@ -2981,19 +3025,8 @@ aside::-webkit-scrollbar-thumb {
     line-height: 1.25rem;
   }
 
-  .sm\:text-xs {
-    font-size: 0.75rem;
-    line-height: 1rem;
-  }
-
   .sm\:underline {
     text-decoration-line: underline;
-  }
-}
-
-@media (min-width: 768px) {
-  .md\:w-10 {
-    width: 2.5rem;
   }
 }
 
