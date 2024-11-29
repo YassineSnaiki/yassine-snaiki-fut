@@ -18,8 +18,8 @@ displayAll();
 btnCloseForm.forEach(btn=>{
     btn.addEventListener('click',e=>{
         e.preventDefault();
-        
         formAddPlayer.classList.add('hidden')
+        formAddPlayer.classList.add('md:hidden')
         formModifyPlayer.classList.add('hidden')
         formModifyKeeper.classList.add('hidden')
         playersContainer.querySelectorAll('.fut-player-card').forEach(p=>p.classList.remove('selected-card'))
@@ -28,6 +28,7 @@ btnCloseForm.forEach(btn=>{
 
 btnAddPlayer.addEventListener('click',e=>{
     formAddPlayer.classList.remove('hidden');
+    formAddPlayer.classList.remove('md:hidden');
 })
 
 playersContainer.addEventListener('click',e=>{
@@ -37,6 +38,8 @@ playersContainer.addEventListener('click',e=>{
     selectedPlayerElement.classList.add('selected-card');
     const selectedPlayer = players.find(p=>p.name === selectedPlayerElement.dataset.name);
     const role = selectedPlayer.position;
+    formAddPlayer.classList.add('hidden');
+    formAddPlayer.classList.add('md:hidden');
     if(role!=='GK') {
         formModifyPlayer.classList.remove('hidden');
         formModifyKeeper.classList.add('hidden');
@@ -66,7 +69,8 @@ playersContainer.addEventListener('click',e=>{
 formAddPlayer.addEventListener('submit', (e) => {
     e.preventDefault(); 
     formAddPlayer.classList.add('hidden');
-    const newPlayer = {
+    formAddPlayer.classList.add('md:hidden');
+    let newPlayer = {
         name: document.getElementById('name').value,
         photo: document.getElementById('photo').value,
         position: document.getElementById('position').value,
@@ -74,14 +78,28 @@ formAddPlayer.addEventListener('submit', (e) => {
         flag: document.getElementById('flag').value,
         club: document.getElementById('club').value,
         logo: document.getElementById('logo').value,
-        rating: '-', 
+        rating: '-',
+    };
+    if(newPlayer.position !== 'GK')
+        newPlayer = {
+    ...newPlayer,  
         pace: '-',   
         shooting: '-',
         passing: '-',  
         dribbling: '-',
         defending: '-', 
         physical: '-'  
-    };
+    }
+    else 
+    newPlayer = {
+    ...newPlayer, 
+        diving: '-',   
+        handling: '-',
+        kicking: '-',  
+        reflexes: '-',
+        speed: '-', 
+        positioning: '-' 
+    }
     players.push(newPlayer);
     localStorage.setItem('players',JSON.stringify(players)) 
     displayAll(); 
