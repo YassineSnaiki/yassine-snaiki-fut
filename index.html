@@ -9,32 +9,34 @@
 <body>
         <div class="cnt max-w-[1280px] mx-auto">
             
-            <main class="main-app w-full flex">
-                <div class="formation basis-[80%] pt-7">
-                    <div class="formation-layout mx-auto w-[400px] h-[675px]  relative flex flex-col justify-center">
-                        <img src="images/field.webp" alt="" class="field-img w-full absolute left-0 bottom-0">    
+            <main class="main-app w-full flex flex-col sm:flex-row">
+                <div class="formation sm:basis-[75%] lg:basis-[80%] pt-7  sm:h-[100dvh] overflow-auto">
+                    <div class="formation-layout mx-auto w-[400px] h-[675px]  relative flex flex-col justify-center rounded-md">
+                        
                     </div>
                 </div>
-                <aside class="sidebar bg-gray-900 basis-[20%]">
+                <aside class="sidebar bg-[#0101017d]  flex-shrink-0 order-[-1] sm:order-1 sm:basis-[25%] lg:basis-[20%] h-fit sm:h-[100dvh] overflow-y-auto">
                     <form class="formation-form flex flex-col px-4 pt-8">
-                        <label class="text-white text-center mb-4">Select Formation</label>
-                        <select class="formation-selection">
-                            <option value="">Select Formation:</option>
-                            <option value="3-1-4-2">3-1-4-2</option>
-                            <option value="4-4-2">4-4-2</option>
-                            <option value="5-3-2">5-3-2</option>
-                            <option value="3-4-2-1">3-4-2-1</option>
-                            <option value="4-1-4-1">4-1-4-1</option>
-                            <option value="4-2-4">4-2-4</option>
-                            <option value="4-5-1">4-5-1</option>
-                            <option value="5-4-1">5-4-1</option>
-                            <option value="4-2-1-3">4-2-1-3</option>
-                            <option value="4-1-3-2">4-1-3-2</option>
-                            <option value="4-3-3">4-3-3</option>
-                            <option value="3-5-2">3-5-2</option>
-                        </select>
-                        <a href="./players.html" class=' text-white w-fit bg-black mx-auto p-2 hover:bg-slate-600 transition-colors mt-2'>Manage Players</a>
-                        <ul class="change-players flex flex-col text-center mt-10 gap-1">
+                        <div class="flex flex-row gap-2 items-center sm:items-stretch sm:flex-col ">
+                            <label class="text-white text-center sm:mb-4">Select Formation :</label>
+                            <select class="formation-selection text-xs lg:text-base">
+                                <option class="text-inherit" value="">Select Formation:</option>
+                                <option class="text-inherit" value="3-1-4-2">3-1-4-2</option>
+                                <option class="text-inherit" value="4-4-2">4-4-2</option>
+                                <option class="text-inherit" value="5-3-2">5-3-2</option>
+                                <option class="text-inherit" value="3-4-2-1">3-4-2-1</option>
+                                <option class="text-inherit" value="4-1-4-1">4-1-4-1</option>
+                                <option class="text-inherit" value="4-2-4">4-2-4</option>
+                                <option class="text-inherit" value="4-5-1">4-5-1</option>
+                                <option class="text-inherit" value="5-4-1">5-4-1</option>
+                                <option class="text-inherit" value="4-2-1-3">4-2-1-3</option>
+                                <option class="text-inherit" value="4-1-3-2">4-1-3-2</option>
+                                <option class="text-inherit" value="4-3-3">4-3-3</option>
+                                <option class="text-inherit" value="3-5-2">3-5-2</option>
+                            </select>
+                            <a href="./players.html" class=' text-white w-fit bg-black mx-0 sm:mx-auto p-2 hover:bg-slate-600 transition-colors sm:mt-2 text-[8px] sm:text-sm lg:text-lg ml-auto'>Manage Players</a>    
+                        </div>
+                        <ul class="change-players flex flex-wrap justify-center sm:flex-col text-center mt-5 mb-5 gap-1">
                             
                         </ul>
                     </form>

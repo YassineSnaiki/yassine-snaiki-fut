@@ -7,7 +7,7 @@ const formAddPlayer = document.querySelector('.form-add-player');
 const formModifyPlayer = document.querySelector('.form-modify-player');
 const formModifyKeeper = document.querySelector('.form-modify-keeper');
 const btnCloseForm = document.querySelectorAll('.btn-close-form');
-const btnDelete = document.querySelector('.btn-delete-player');
+const btnDelete = document.querySelectorAll('.btn-delete-player');
 let selectedPlayerElement = null;
 
 
@@ -133,15 +133,16 @@ displayAll();
 })
 
 
-btnDelete.addEventListener('click',e=>{
+btnDelete.forEach(el=>el.addEventListener('click',e=>{
   e.preventDefault();
   const selectedIndex = players.findIndex(p=>p.name === selectedPlayerElement.dataset.name);
   
   players.splice(selectedIndex,1);
   localStorage.setItem('players',JSON.stringify(players));
   formModifyPlayer.classList.add('hidden');
+  formModifyKeeper.classList.add('hidden');
   displayAll();
-})
+}))
 
 
 function displayAll(){

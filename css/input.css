@@ -4,17 +4,17 @@
 
 
 .main-app {
-    /* background-image: url("../images/frontpage_bg.png");
-    background-size: contain;
-    background-repeat: no-repeat; */
-    background: 
-    url('../images/frontpage_bg.png') top center / contain no-repeat,
-    linear-gradient(to bottom, rgb(169, 169, 169) 0%, rgb(86, 86, 86) 30%, rgb(62, 62, 62) 50%, rgb(0, 0, 0) 100%);
-    
+    background-image: url(../images/bb.jpg);
+    background-size: cover;
+    position: relative;
 }
+
 .formation-layout {
     aspect-ratio: 3.5/5;
     perspective: 500px;
+}
+.formation {
+    position: relative;
 }
 
 .field-img {
@@ -174,3 +174,22 @@
     }
 }
 /*card styles*/
+
+aside::-webkit-scrollbar {
+    width: 12px;
+}
+
+aside::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+
+aside::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.formation-layout {
+    background-image: url(../images/sb.webp);
+    background-size: contain;
+}

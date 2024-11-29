@@ -37,7 +37,7 @@ makeLayout(localStorage.getItem('formation'),layout);
     layout.querySelectorAll('.player-card').forEach(card=>card.classList.remove('selected-card'));
     currCard.classList.add('selected-card');
     
-    changeList.innerHTML = "<h3 class='text-white text-center'>Select Player :</h3>";
+    changeList.innerHTML = "";
     let arr;
     if(currCard.dataset.role === "GK") arr = goalKeepers;
     else if (currCard.dataset.role === "LB" || currCard.dataset.role === 'CB' || currCard.dataset.role === 'RB') arr = backPlayers;
@@ -46,10 +46,10 @@ makeLayout(localStorage.getItem('formation'),layout);
     arr.forEach(p=>{
         if(!currentTeam.find(el=>el.name === p.name))
             changeList.insertAdjacentHTML('beforeend',`
-        <li class="text-white flex items-stretch"><button class="btn-select-player flex justify-between px-4 items-center cursor-pointer hover:bg-slate-800 w-full bg-slate-600 transition-colors" data-name="${p.name}"><img class="w-10" src="${p.photo}"/><span>${p.name.split(' ').slice(1)}</span> <span>${p.position}</span></button></li>
+        <li class="text-white flex items-stretch"><button class="btn-select-player flex justify-between p-1 sm:px-4 items-center cursor-pointer hover:bg-slate-800 w-full bg-slate-600 transition-colors flex-row text-[8px] sm:text-xs lg:text-base xl:text-lg" data-name="${p.name}"><img class="w-6 md:w-10" src="${p.photo}"/><span>${p.name.split(' ').slice(1)}</span> <span>${p.position}</span></button></li>
         `)
     })
-    changeList.insertAdjacentHTML('beforeend',"<button class='btn-close-choice text-white w-fit bg-black mx-auto p-2 hover:bg-slate-600 transition-colors'>Cancel</button>")
+    changeList.insertAdjacentHTML('beforeend',"<button class='mx-0 sm:mx-auto btn-close-choice text-white w-fit bg-black p-2 hover:bg-slate-600 transition-colors text-xs sm:text-sm lg:text-lg'>Cancel</button>")
     changeList.querySelector('.btn-close-choice').addEventListener('click',e=>{
         e.preventDefault();
         formationForm.querySelector('.change-players').innerHTML = "";
@@ -71,7 +71,7 @@ formationForm.querySelector('.change-players').addEventListener('click',e=>{
 
 function makeLayout(formation,layout) {
     const frmArr = formation.split('-').map(el=>+el);
-    layout.innerHTML = '<img src="images/field.webp" alt="" class="field-img w-full absolute left-0 top-0">';
+    layout.innerHTML = '';
     const GKRow = document.createElement('div');
     GKRow.classList.add("cards-row","flex","justify-around","basis-[20%]");
     const GKElement = card.cloneNode(true);
