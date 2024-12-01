@@ -235,23 +235,15 @@ function displayAll(){
             <img class="w-4 player-logo" src="${players[i].logo}" alt="${players[i].club}"/>
             </div>
             <div class="player-card-top">
-            <div class="player-master-info">
-            
-            </div>
             <div class="player-picture">
             <img  src="${players[i].photo}" alt="${players[i].name}" draggable="false">
-            <div class="player-extra">
             </div>
             </div>
-            </div>
-            <!-- Player Card Bottom -->
             <div class="player-card-bottom">
             <div class="player-info">
-            <!-- Player Name -->
             <div class="player-name">
             <span>${players[i].name.split(' ')[0][0]+" "+players[i].name.split(' ')[1]}</span>
             </div>
-            <!-- Player Features -->
             <span class="flex w-full justify-around text-[8px]">
             <span class="player-position text-center">${players[i].position}</span>
             <span class="player-rating text-center">${players[i].rating}</span> 

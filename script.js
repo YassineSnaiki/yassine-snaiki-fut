@@ -95,9 +95,11 @@ function makeLayout(formation,layout) {
                 }
                 if(i===1) c.dataset.role = 'CM';
                 if(i===2)  {
-                    if(j==0) c.dataset.role = 'LW';
-                    else if(j==frmArr[2]-1) c.dataset.role = 'RW';
-                    else c.dataset.role = 'ST';
+                    if(frmArr[i]!==1){
+                        if(j==0) c.dataset.role = 'LW';
+                        else if(j==frmArr[2]-1) c.dataset.role = 'RW';
+                        else c.dataset.role = 'ST';
+                    }else c.dataset.role = 'ST'
                 }
             }
             else if(frmArr.length === 4) {
@@ -106,12 +108,15 @@ function makeLayout(formation,layout) {
                     else if(j===frmArr[0]-1) c.dataset.role = 'RB';
                     else c.dataset.role = 'CB';
                 }
-                if(i===1) c.dataset.role = 'CDM';
+                if(i===1) c.dataset.role = 'CM';
                 if(i===2) c.dataset.role = 'CM';
                 if(i===3)  {
-                    if(j==0) c.dataset.role = 'LW';
-                    else if(j==frmArr[3]-1) c.dataset.role = 'RW';
-                    else c.dataset.role = 'ST';
+                    if(frmArr[3] === 1) c.dataset.role ='ST'
+                    else {
+                        if(j==0) c.dataset.role = 'LW';
+                        else if(j==frmArr[3]-1) c.dataset.role = 'RW';
+                        else c.dataset.role = 'ST';
+                    }
                 }
             }
             cardsRow.append(c);
@@ -186,17 +191,14 @@ function displayPlayers(players) {
             </div>`
         card.insertAdjacentHTML('afterbegin',`
             <div class="fut-player-card relative">
+            <span class="absolute top-0 w-4 h-4 text-xs font-semibold bg-red-600 text-white player-chemistry flex justify-center items-center rounded-full">${calcChemistry(card,players[i])}</span>
             <div class="absolute left-0 top-5 flex w-full justify-between p-1 items-end z-10">
             <img class="w-4 player-flag" src="${players[i].flag}" alt="${players[i].country}"/>
             <img class="w-4 player-logo" src="${players[i].logo}" alt="${players[i].club}"/>
             </div>
             <div class="player-card-top">
-            <div class="player-master-info">
-            </div>
             <div class="player-picture">
             <img  src="${players[i].photo}" alt="${players[i].name}" draggable="false">
-            <div class="player-extra">
-            </div>
             </div>
             </div>
             <div class="player-card-bottom">
@@ -220,7 +222,7 @@ function displayPlayers(players) {
 
 function displayPlayer(card,player) {
     const cardName= card.dataset.name;
-    
+        card.querySelector('.player-chemistry').textContent = calcChemistry(card,player)
         card.querySelector('.player-picture').querySelector('img').src = player.photo;
         card.querySelector('.player-name').querySelector('span').textContent = player.name.split(' ')[0][0]+" "+player.name.split(' ')[1];
         card.querySelector('.player-position').textContent = player.position;
@@ -253,4 +255,15 @@ function displayPlayer(card,player) {
 
         
         localStorage.setItem('currentTeam',JSON.stringify(currentTeam))
+}
+
+
+function calcChemistry(card,player) {
+    let res = 0;
+    if(card.dataset.role === player.position || card.dataset.role==='CM' && player.position==='CDM') res+=10;
+    currentTeam.forEach(p=>{
+        if(p.club === player.club && p.name !== player.name) res+=3;
+        if(p.nationality === player.nationality && p.name !== player.name)  res+=1;
+    })  
+    return res;
 }
