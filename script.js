@@ -46,7 +46,7 @@ makeLayout(localStorage.getItem('formation'),layout);
     arr.forEach(p=>{
         if(!currentTeam.find(el=>el.name === p.name))
             changeList.insertAdjacentHTML('beforeend',`
-        <li class="text-white  mb-2 flex items-stretch"><button class="btn-select-player flex justify-between p-1 px-8 sm:px-4 items-center cursor-pointer hover:bg-slate-800 w-full bg-slate-600 transition-colors flex-row text-2xl sm:text-[8px] lg:text-base xl:text-lg" data-name="${p.name}"><img class="w-20 sm:w-10" src="${p.photo}"/><span>${p.name.split(' ').slice(1)}</span> <span>${p.position}</span></button></li>
+        <li class="text-white  mb-2 flex items-stretch"><button class="btn-select-player flex justify-between p-1 px-8 sm:px-1 items-center cursor-pointer hover:bg-slate-800 w-full bg-slate-600 transition-colors flex-row text-xl sm:text-[8px] md:text-xs lg:text-base xl:text-lg" data-name="${p.name}"><img class="w-20 sm:w-10" src="${p.photo}"/><span>${p.name.split(' ').slice(1)}</span> <span class ="${p.position === 'GK'? "bg-blue-500":p.position[1] === 'B' ? 'bg-green-500' : p.position ==='CM' ||p.position==='CDM' ?'bg-yellow-500' : "bg-red-500"} px-1 font-semibold text-lg sm:text-[6px] lg:text-sm xl:text-base">${p.position}</span></button></li>
         `)
     })
     changeList.insertAdjacentHTML('afterbegin',"<button class='mx-auto w-full text-center btn-close-choice text-white  p-2 bg-slate-600 hover:bg-slate-800 transition-colors text-lg sm:text-sm lg:text-lg mb-2'>Cancel</button>")
@@ -185,25 +185,25 @@ function displayPlayers(players) {
             </span>
             </div>`
         card.insertAdjacentHTML('afterbegin',`
-            <div class="fut-player-card">
+            <div class="fut-player-card relative">
+            <div class="absolute left-0 top-5 flex w-full justify-between p-1 items-end z-10">
+            <img class="w-4 player-flag" src="${players[i].flag}" alt="${players[i].country}"/>
+            <img class="w-4 player-logo" src="${players[i].logo}" alt="${players[i].club}"/>
+            </div>
             <div class="player-card-top">
             <div class="player-master-info">
-            
             </div>
             <div class="player-picture">
-            <img  src="${players[i].photo}" alt="player" draggable="false">
+            <img  src="${players[i].photo}" alt="${players[i].name}" draggable="false">
             <div class="player-extra">
             </div>
             </div>
             </div>
-            <!-- Player Card Bottom -->
             <div class="player-card-bottom">
             <div class="player-info">
-            <!-- Player Name -->
             <div class="player-name">
             <span>${players[i].name.split(' ')[0][0]+" "+players[i].name.split(' ')[1]}</span>
             </div>
-            <!-- Player Features -->
             <span class="flex w-full justify-around text-[8px]">
             <span class="player-position text-center">${players[i].position}</span>
             <span class="player-rating text-center">${players[i].rating}</span> 
@@ -225,6 +225,8 @@ function displayPlayer(card,player) {
         card.querySelector('.player-name').querySelector('span').textContent = player.name.split(' ')[0][0]+" "+player.name.split(' ')[1];
         card.querySelector('.player-position').textContent = player.position;
         card.querySelector('.player-rating').textContent = player.rating;
+        card.querySelector('.player-flag').src = player.flag;
+        card.querySelector('.player-logo').src = player.logo;
         if(card.dataset.role === 'GK'){
             card.querySelector('.feature-diving').textContent = player.diving;
             card.querySelector('.feature-handling').textContent = player.handling;

@@ -29,6 +29,8 @@ btnCloseForm.forEach(btn=>{
 btnAddPlayer.addEventListener('click',e=>{
     formAddPlayer.classList.remove('hidden');
     formAddPlayer.classList.remove('md:hidden');
+    formModifyKeeper.classList.add('hidden');
+    formModifyPlayer.classList.add('hidden');
 })
 
 playersContainer.addEventListener('click',e=>{
@@ -227,13 +229,17 @@ function displayAll(){
             </span>
             </div>`
         playersContainer.insertAdjacentHTML('beforeend',`
-            <div class="fut-player-card" draggable="true" data-name = "${players[i].name}">
+            <div class="fut-player-card relative"  data-name = "${players[i].name}">
+            <div class="absolute left-0 top-5 flex w-full justify-between p-1 items-end z-10">
+            <img class="w-4 player-flag" src="${players[i].flag}" alt="${players[i].country}"/>
+            <img class="w-4 player-logo" src="${players[i].logo}" alt="${players[i].club}"/>
+            </div>
             <div class="player-card-top">
             <div class="player-master-info">
             
             </div>
             <div class="player-picture">
-            <img  src="${players[i].photo}" alt="Messi" draggable="false">
+            <img  src="${players[i].photo}" alt="${players[i].name}" draggable="false">
             <div class="player-extra">
             </div>
             </div>
