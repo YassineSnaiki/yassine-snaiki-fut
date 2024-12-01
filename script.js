@@ -1,10 +1,12 @@
+
+
+document.body.classList.add('hidden')
 const currentTeam = JSON.parse(localStorage.getItem('currentTeam'));
 const players= JSON.parse(localStorage.getItem('players'));
 const goalKeepers = players.filter(p=>p.position === 'GK');
 const attackPlayers = players.filter(p=>p.position === 'ST' ||p.position === 'RW' || p.position ==='LW');
 const middlePlayers = players.filter(p=>p.position === 'CM' ||p.position === 'CDM');
 const backPlayers = players.filter(p=>p.position === 'CB' ||p.position === 'LB' || p.position ==='RB');
-
 
 
 const layout = document.querySelector('.formation-layout');
@@ -30,8 +32,8 @@ formationSelection.addEventListener('input',e=>{
 
 
 makeLayout(localStorage.getItem('formation'),layout); 
-    let currCard = null;
-    layout.addEventListener('click',e=>{
+let currCard = null;
+layout.addEventListener('click',e=>{
     if(!e.target.closest('.player-card')) return;
     currCard = e.target.closest('.player-card');
     layout.querySelectorAll('.player-card').forEach(card=>card.classList.remove('selected-card'));
@@ -88,8 +90,7 @@ function makeLayout(formation,layout) {
     GKRow.classList.add("cards-row","flex","justify-around","basis-[20%]");
     const GKElement = card.cloneNode(true);
     GKElement.dataset.role = 'GK'; 
-    GKRow.append(GKElement)
-    
+    GKRow.append(GKElement)   
     layout.prepend(GKRow);
     frmArr.forEach((num,i)=>{
         const cardsRow = document.createElement('div');
@@ -134,7 +135,10 @@ function makeLayout(formation,layout) {
         layout.prepend(cardsRow)
     })
     displayPlayers(currentTeam);
+    document.body.classList.remove('hidden')
 }
+
+let done = false;
 function displayPlayers(players) {
     const cards = document.querySelectorAll('.player-card');
     
@@ -208,7 +212,7 @@ function displayPlayers(players) {
             </div>
             <div class="player-card-top">
             <div class="player-picture">
-            <img  src="${players[i].photo}" alt="${players[i].name}" draggable="false">
+            <img class="player-img" src="${players[i].photo}" alt="${players[i].name}" draggable="false">
             </div>
             </div>
             <div class="player-card-bottom">
@@ -227,6 +231,12 @@ function displayPlayers(players) {
         </div>
         </div>
         `)
+    })
+    loadImages(document.querySelectorAll('.player-img')).then(()=>{
+        if(!done)  {
+            makeLayout(localStorage.getItem('formation'),layout);
+            done=!done;
+        }
     })
 }
 
@@ -255,15 +265,8 @@ function displayPlayer(card,player) {
             card.querySelector('.feature-defending').textContent = player.defending;
             card.querySelector('.feature-physical').textContent = player.physical;
         }
-        
-        
-       
         currentTeam[currentTeam.findIndex(el=>el.name===cardName)] = player;
-        
-        card.dataset.name = player.name
-      
-
-        
+        card.dataset.name = player.name;
         localStorage.setItem('currentTeam',JSON.stringify(currentTeam))
 }
 
@@ -279,9 +282,22 @@ function calcChemistry(card,player) {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    const formation = localStorage.getItem('formation') || initialFormation;
-    if (formation) {
-        makeLayout(formation, layout);
-    }
-});
+
+
+
+function loadImages(images) {
+    return new Promise((resolve, reject) => {
+        let loadedImages = 0;
+        let totalImages = images.length;
+
+        images.forEach(image => {
+            image.addEventListener('load', () => {
+                loadedImages++;
+                if (loadedImages === totalImages) {
+                    resolve(); // All images loaded
+                }
+            });
+            image.addEventListener('error', () => reject('Error loading images'));
+        });
+    });
+}
