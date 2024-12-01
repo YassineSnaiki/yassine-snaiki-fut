@@ -595,6 +595,7 @@ const initialPlayers = [
         positioning: 85
       }
 ]
+const initialFormation = '4-4-2';
 
 if(!JSON.parse(localStorage.getItem('players'))) {
     localStorage.setItem('players',JSON.stringify(initialPlayers));   
@@ -603,7 +604,7 @@ if(!JSON.parse(localStorage.getItem('currentTeam'))) {
     localStorage.setItem('currentTeam',JSON.stringify(initialCurrentTeam));   
 }
 if(!localStorage.getItem('formation')) {
-    localStorage.setItem('formation','4-4-2');   
+    localStorage.setItem('formation',initialFormation);   
 }
 
 

@@ -277,3 +277,11 @@ function calcChemistry(card,player) {
     })  
     return res;
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const formation = localStorage.getItem('formation') || initialFormation;
+    if (formation) {
+        makeLayout(formation, layout);
+    }
+});
