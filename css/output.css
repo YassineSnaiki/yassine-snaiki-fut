@@ -2762,21 +2762,16 @@ video {
 
 ::-webkit-scrollbar {
   width: 4px;
-  /* Vertical scrollbar width */
   height: 4px;
-  /* Horizontal scrollbar height */
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: #888;
-  /* Scrollbar thumb color */
   border-radius: 4px;
-  /* Rounded corners */
 }
 
 ::-webkit-scrollbar-track {
   background: #f0f0f0;
-  /* Scrollbar track color */
 }
 
 body {
@@ -2955,8 +2950,6 @@ body {
     }
   }
 }
-
-/*card styles*/
 
 aside::-webkit-scrollbar {
   width: 12px;

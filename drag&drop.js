@@ -1,14 +1,14 @@
 let dragged = null;
 layout.addEventListener('dragstart',e=>{
     if (!e.target.classList.contains('player-card')) {
-        e.preventDefault(); // Prevent drag if it's not a player-card
+        e.preventDefault(); 
         return;
     }
     dragged = e.target.closest('.player-card');
     changeList.innerHTML = "";
 })
 layout.addEventListener('dragover', (e) => {
-    e.preventDefault(); // Required for drop to work
+    e.preventDefault(); 
 });
 layout.addEventListener('dragenter', (e) => {
     if(!e.target.closest('.player-card')) return;
@@ -34,15 +34,12 @@ layout.addEventListener('drop', e => {
     const draggedObject = currentTeam[draggedIndex];
     const dropInObject = currentTeam[dropInIndex];
 
-    // Update the DOM
     displayPlayer(e.target.closest('.player-card'), draggedObject);
     displayPlayer(dragged, dropInObject);
 
-    // Update the currentTeam array
     currentTeam[draggedIndex] = dropInObject;
     currentTeam[dropInIndex] = draggedObject;
 
-    // Save to localStorage
     localStorage.setItem('currentTeam', JSON.stringify(currentTeam));
 });
  
