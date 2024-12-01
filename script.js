@@ -46,7 +46,17 @@ makeLayout(localStorage.getItem('formation'),layout);
     arr.forEach(p=>{
         if(!currentTeam.find(el=>el.name === p.name))
             changeList.insertAdjacentHTML('beforeend',`
-        <li class="text-white  mb-2 flex items-stretch"><button class="btn-select-player flex justify-between p-1 px-8 sm:px-1 items-center cursor-pointer hover:bg-slate-800 w-full bg-slate-600 transition-colors flex-row text-xl sm:text-[8px] md:text-xs lg:text-base xl:text-lg" data-name="${p.name}"><img class="w-20 sm:w-10" src="${p.photo}"/><span>${p.name.split(' ').slice(1)}</span> <span class ="${p.position === 'GK'? "bg-blue-500":p.position[1] === 'B' ? 'bg-green-500' : p.position ==='CM' ||p.position==='CDM' ?'bg-yellow-500' : "bg-red-500"} px-1 font-semibold text-lg sm:text-[6px] lg:text-sm xl:text-base">${p.position}</span></button></li>
+        <li class="text-white  mb-2 flex items-stretch">
+        <button class="btn-select-player flex justify-between p-1 px-8 sm:px-1 items-center cursor-pointer hover:bg-slate-800 w-full bg-slate-600 transition-colors flex-row text-xl sm:text-[8px] md:text-xs lg:text-base xl:text-lg" data-name="${p.name}">
+        <img class="w-20 sm:w-10" src="${p.photo}"/>
+        <div class="flex flex-col items-center">
+        <span>${p.name.split(' ').slice(1)}</span> 
+        <div class="flex gap-1 items-center">
+        <img src="${p.flag}" class="w-4 " alt="${p.nationality}"/>
+        <img src="${p.logo}" class="w-4 " alt="${p.club}"/>
+        </div>
+        </div>
+        <span class ="${p.position === 'GK'? "bg-blue-500":p.position[1] === 'B' ? 'bg-green-500' : p.position ==='CM' ||p.position==='CDM' ?'bg-yellow-500' : "bg-red-500"} px-1 font-semibold text-lg sm:text-[6px] lg:text-sm xl:text-base">${p.position}</span></button></li>
         `)
     })
     changeList.insertAdjacentHTML('afterbegin',"<button class='mx-auto w-full text-center btn-close-choice text-white  p-2 bg-slate-600 hover:bg-slate-800 transition-colors text-lg sm:text-sm lg:text-lg mb-2'>Cancel</button>")
