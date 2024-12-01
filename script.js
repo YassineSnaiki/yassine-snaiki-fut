@@ -135,7 +135,6 @@ function makeLayout(formation,layout) {
         layout.prepend(cardsRow)
     })
     displayPlayers(currentTeam);
-    document.body.classList.remove('hidden')
 }
 
 let done = false;
@@ -236,6 +235,7 @@ function displayPlayers(players) {
         if(!done)  {
             makeLayout(localStorage.getItem('formation'),layout);
             done=!done;
+            document.body.classList.remove('hidden');
         }
     })
 }
