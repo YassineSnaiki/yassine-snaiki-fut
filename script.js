@@ -241,7 +241,7 @@ function displayPlayers(players) {
 }
 
 function displayPlayer(card,player) {
-    const cardName= card.dataset.name;
+    const cardName = card.dataset.name;
         card.querySelector('.player-chemistry').textContent = calcChemistry(card,player)
         card.querySelector('.player-picture').querySelector('img').src = player.photo;
         card.querySelector('.player-name').querySelector('span').textContent = player.name.split(' ')[0][0]+" "+player.name.split(' ')[1];
@@ -267,13 +267,16 @@ function displayPlayer(card,player) {
         }
         currentTeam[currentTeam.findIndex(el=>el.name===cardName)] = player;
         card.dataset.name = player.name;
+        makeLayout(localStorage.getItem('formation'),layout); 
         localStorage.setItem('currentTeam',JSON.stringify(currentTeam))
 }
 
 
 function calcChemistry(card,player) {
     let res = 0;
-    if(card.dataset.role === player.position || card.dataset.role==='CM' && player.position==='CDM') res+=10;
+    if(card.dataset.role === player.position ||
+       card.dataset.role==='CM' && player.position==='CDM' ||
+       card.dataset.role==='LW' || card.dataset.role==='RW' && player.position==='ST') res+=10;
     currentTeam.forEach(p=>{
         if(p.club === player.club && p.name !== player.name) res+=3;
         if(p.nationality === player.nationality && p.name !== player.name)  res+=1;
@@ -294,7 +297,7 @@ function loadImages(images) {
             image.addEventListener('load', () => {
                 loadedImages++;
                 if (loadedImages === totalImages) {
-                    resolve(); // All images loaded
+                    resolve(); 
                 }
             });
             image.addEventListener('error', () => reject('Error loading images'));
