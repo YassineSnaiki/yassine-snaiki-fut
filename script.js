@@ -1,6 +1,5 @@
 
 
-document.body.classList.add('hidden')
 const currentTeam = JSON.parse(localStorage.getItem('currentTeam'));
 const players= JSON.parse(localStorage.getItem('players'));
 const goalKeepers = players.filter(p=>p.position === 'GK');
@@ -235,7 +234,7 @@ function displayPlayers(players) {
         if(!done)  {
             makeLayout(localStorage.getItem('formation'),layout);
             done=!done;
-            document.body.classList.remove('hidden');
+
         }
     })
 }

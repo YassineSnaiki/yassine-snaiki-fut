@@ -43,3 +43,35 @@ layout.addEventListener('drop', e => {
     localStorage.setItem('currentTeam', JSON.stringify(currentTeam));
 });
  
+
+
+let offsetX = null;
+let offsetY = null;
+layout.addEventListener('touchstart', e => {
+    const touch = e.touches[0];
+    const target = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (!target.closest('.player-card')) {
+        return;
+    }
+
+    dragged = target.closest('.player-card');
+
+    changeList.innerHTML = "";
+    const rect = dragged.getBoundingClientRect();
+    dragged.style.position = 'absolute'; // Ensure the element is positioned absolutely
+    dragged.style.left = `${rect.left}px`;
+    dragged.style.top = `${rect.top}px`;
+    offsetX = touch.clientX - rect.left;
+    offsetY = touch.clientY - rect.top;
+});
+
+layout.addEventListener('touchmove', e => {
+    if (!dragged) return; // Ensure there's a dragged element
+    const touch = e.touches[0];
+    dragged.style.left = `${touch.clientX - offsetX}px`;
+    dragged.style.top = `${touch.clientY - offsetY}px`;
+});
+
+layout.addEventListener('touchend', e => {
+    dragged = null; // Clear the dragged reference on touch end
+});

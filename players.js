@@ -82,6 +82,7 @@ formAddPlayer.addEventListener('submit', (e) => {
         logo: document.getElementById('logo').value,
         rating: '-',
     };
+    if(!newPlayer.name.length) alert('le champs est vide');
     if(newPlayer.position !== 'GK')
         newPlayer = {
     ...newPlayer,  
